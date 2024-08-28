@@ -20,9 +20,7 @@ public class WebViewExampleController {
     @GetMapping("hello-param")
     public String helloMvc(@RequestParam("name") String name, Model model) {
         model.addAttribute("name", name);
-        // localhost:8080/hello-param?name=John
-        // @RequestParam -- HTTP 요청의 쿼리 파라미터를 메서드의 매개변수로 바인딩
-        // 즉 name이라는 변수에 'John'이 할당됨
+        // localhost:8080/hello-param?name=John     name이라는 변수에 'John'이 할당됨
         // model.addAttribute('name', name) : 앞 name은 아래 html에서 사용될 변수 이름
         return "helloTemplate";
     }
@@ -30,7 +28,6 @@ public class WebViewExampleController {
     @ResponseBody  // model로 전달되지 않고 return 구문 값이 바로 body로만 구성됨
     public String helloString(@RequestParam("name") String name) {
         return "hello " + name;
-        //ResponseBody 때문에 후처리HTML없이 내용만 보내짐. 소스보기 하면 알 수 있음
     }
     @GetMapping("hello-api")
     @ResponseBody
