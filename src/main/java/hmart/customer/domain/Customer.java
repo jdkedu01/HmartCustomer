@@ -9,13 +9,12 @@ public class Customer {
     String id;
     String name;
     int age;
-    String level;
+    String levels;
     String job;
     int point;
     // 가능한 테이블명과 속성명을 영어로 할 것.
     // 한글로 한 경우 여기서 @Table, @Column으로 match시켜야 함
     // JPA repository 참고
-
     public String getId() {
         return id;
     }
@@ -35,10 +34,10 @@ public class Customer {
         this.age = age;
     }
     public String getLevel() {
-        return level;
+        return levels;
     }
     public void setLevel(String level) {
-        this.level = level;
+        this.levels = level;
     }
     public String getJob() {
         return job;

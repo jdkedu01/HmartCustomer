@@ -3,6 +3,7 @@ package hmart.customer.service;
 import hmart.customer.domain.Customer;
 import hmart.customer.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Optional;
 @Transactional
 public class CustomerService {
     private final CustomerRepository customerRepository;
-    //@Autowired
+    @Autowired
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
