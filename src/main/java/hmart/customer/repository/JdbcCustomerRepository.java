@@ -21,21 +21,21 @@ public class JdbcCustomerRepository implements CustomerRepository{
     }
     @Override
     public Customer save(Customer customer) {
-        String sql = "insert into customer(id, name) values(?, ?)";
-        Connection conn = null;
-        PreparedStatement pstmt = null;
+        String sql = "insert into customer values(?, ?, ?, ?, ?, ?)";
+        Connection conn = null;        PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
             conn = getConnection();  // private method
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, customer.getId());
             pstmt.setString(2, customer.getName());
+            pstmt.setInt(3, customer.getAge());
+            pstmt.setString(4, customer.getLevels());
+            pstmt.setString(5, customer.getJob());
+            pstmt.setInt(6, customer.getPoint());
             int num = pstmt.executeUpdate();
-            if (num == 1) {
-                return customer;
-            } else {
-                throw new SQLException("id 조회 실패");
-            }
+            if (num == 1) {                return customer;             }
+            else {        throw new SQLException("id 조회 실패");         }
         } catch (Exception e) {
             throw new IllegalStateException(e);
         } finally {
@@ -45,8 +45,7 @@ public class JdbcCustomerRepository implements CustomerRepository{
     @Override
     public Optional<Customer> findById(String id) {
         String sql = "select * from customer where id = ?";
-        Connection conn = null;
-        PreparedStatement pstmt = null;
+        Connection conn = null;        PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
             conn = getConnection();
@@ -62,13 +61,10 @@ public class JdbcCustomerRepository implements CustomerRepository{
                 customer.setJob(rs.getString("job"));
                 customer.setPoint(rs.getInt("point"));
                 return Optional.of(customer);
-            } else {
-                return Optional.empty();
-            }
+            } else {       return Optional.empty();            }
         } catch (Exception e) {
             throw new IllegalStateException(e);
-        } finally {
-            close(conn, pstmt, rs);
+        } finally {   close(conn, pstmt, rs);
         }
     }
     @Override
@@ -93,10 +89,8 @@ public class JdbcCustomerRepository implements CustomerRepository{
                 customers.add(customer);
             }
             return customers;
-        } catch (Exception e) {
-            throw new IllegalStateException(e);
-        } finally {
-            close(conn, pstmt, rs);
+        } catch (Exception e) {   throw new IllegalStateException(e);
+        } finally {            close(conn, pstmt, rs);
         }
     }
     @Override
@@ -151,7 +145,6 @@ public class JdbcCustomerRepository implements CustomerRepository{
     }
     private void close(Connection conn) throws SQLException {
         DataSourceUtils.releaseConnection(conn, dataSource);
-    }
-    //스프링부트용 DB Connection 풀관리 :
+    }    //스프링부트용 DB Connection 풀관리 :
     // DataSourceUtils.getConnection/releaseConnection을 사용해야 함
 }

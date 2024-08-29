@@ -45,9 +45,6 @@ public class CustomerController {
     @GetMapping(value = "/customers")
     public String list(Model model) {
         List<Customer> customers = customerService.findCustomers();
-        System.out.println(customers.size());
-        System.out.println(customers.getFirst().getAge());
-
         model.addAttribute("customers", customers);
         return "customers/customerList";
     }

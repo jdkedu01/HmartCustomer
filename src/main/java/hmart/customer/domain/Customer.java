@@ -1,18 +1,20 @@
 package hmart.customer.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 public class Customer {
     @Id //JPA에서 인식
     String id;
     String name;
-    int age;
+    Integer age; //JPA에서 Nullvalue 고려
     String levels;
     String job;
-    int point;
-    // 가능한 테이블명과 속성명을 영어로 할 것.
+    Integer point; //JPA만 Nullvalue 고려
+     // 가능한 테이블명과 속성명을 영어로 할 것.
     // 한글로 한 경우 여기서 @Table, @Column으로 match시켜야 함
     // JPA repository 참고
     public String getId() {
@@ -27,17 +29,11 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
     public String getLevels() {
         return levels;
     }
-    public void setLevels(String level) {
-        this.levels = level;
+    public void setLevels(String levels) {
+        this.levels = levels;
     }
     public String getJob() {
         return job;
@@ -45,10 +41,16 @@ public class Customer {
     public void setJob(String job) {
         this.job = job;
     }
-    public int getPoint() {
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+    public Integer getPoint() {
         return point;
     }
-    public void setPoint(int point) {
+    public void setPoint(Integer point) {
         this.point = point;
     }
 }

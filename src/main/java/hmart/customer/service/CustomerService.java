@@ -32,8 +32,8 @@ public class CustomerService {
         // 여기서도 별도의 조건이 있으면 코드로 표현함. 예를 들어 현재의 리소스상황에따라 상위 N개로 제한할 수 있음
         return customerRepository.findAll();
     }
-    public Optional<Customer> findOne(String memberId) {
-        return customerRepository.findById(memberId);
+    public Optional<Customer> findOne(String customerId) {
+        return customerRepository.findById(customerId);
     }
 }
 

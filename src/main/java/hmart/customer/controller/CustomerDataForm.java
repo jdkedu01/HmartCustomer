@@ -1,3 +1,5 @@
+// 이 파일은 Customer와 동일. 이파일은 불피요.
+// 다만, HTML의 INPUT Form이 Customer와 동일하지 않다면 파일 필요
 //package hmart.customer.controller;
 //
 //public class CustomerDataForm {

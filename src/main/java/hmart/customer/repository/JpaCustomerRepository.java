@@ -2,12 +2,15 @@ package hmart.customer.repository;
 
 import hmart.customer.domain.Customer;
 import jakarta.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+@Repository
 public class JpaCustomerRepository implements CustomerRepository {
     private final EntityManager em;  // DI
+    @Autowired
     public JpaCustomerRepository(EntityManager em) {
         this.em = em;
     }
@@ -27,9 +30,8 @@ public class JpaCustomerRepository implements CustomerRepository {
     }
     public Optional<Customer> findByName(String name) {
         List<Customer> result = em.createQuery(
-                        "select m from Customer m where m.name = :name",Customer.class)
-                .setParameter("name", name)
-                .getResultList();
+               "select m from Customer m where m.name = :name",Customer.class)
+                .setParameter("name", name).getResultList();
         return result.stream().findAny();
     }
 }

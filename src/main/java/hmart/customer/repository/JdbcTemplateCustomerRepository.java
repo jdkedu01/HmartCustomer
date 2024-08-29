@@ -29,10 +29,10 @@ public class JdbcTemplateCustomerRepository implements CustomerRepository {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("id", customer.getId());
         parameters.put("name", customer.getName());
-        parameters.put("age", customer.getName());
-        parameters.put("levels", customer.getName());
-        parameters.put("job", customer.getName());
-        parameters.put("point", customer.getName());
+        parameters.put("age", customer.getAge());
+        parameters.put("levels", customer.getLevels());
+        parameters.put("job", customer.getJob());
+        parameters.put("point", customer.getPoint());
         jdbcInsert.execute(parameters);
         // 앞의 JDBCTemplate 예제의 insert와는 다른 접근방법. insert문을 사용
 //        String insertQuery = "INSERT INTO customer (id, name) VALUES (?, ?)";
@@ -47,8 +47,7 @@ public class JdbcTemplateCustomerRepository implements CustomerRepository {
     }
     @Override
     public List<Customer> findAll() {
-        return jdbcTemplate.query("select * from customer", customerRowMapper());
-    }
+        return jdbcTemplate.query("select * from customer", customerRowMapper());  }
     @Override
     public Optional<Customer> findByName(String name) {
         List<Customer> result = jdbcTemplate.query("select * from customer where name = ?",
@@ -56,7 +55,7 @@ public class JdbcTemplateCustomerRepository implements CustomerRepository {
         return result.stream().findAny();
     }
     private RowMapper<Customer> customerRowMapper() {
-        return (rs, rowNum) -> {
+        return (rs, rowNum) -> {// 역ROM (DB 결과를 객체(Domain Entity)로 변환
             Customer customer = new Customer();
             customer.setId(rs.getString("id"));
             customer.setName(rs.getString("name"));
@@ -64,8 +63,7 @@ public class JdbcTemplateCustomerRepository implements CustomerRepository {
             customer.setLevels(rs.getString("levels"));
             customer.setJob(rs.getString("job"));
             customer.setPoint(rs.getInt("point"));
-            return customer;
-            // 결과가 나오늘 것을 RowMapper가 매핑.역 ROM (DB 결과를 객체(Domain Entity)로 변환
+            return customer; // 결과가 나오늘 것을 RowMapper가 매핑.
             // RS와 행번호로부터 하나의 객체를 생성. 건별 처리
         };
     }
