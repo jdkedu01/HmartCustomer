@@ -28,7 +28,7 @@ public class CustomerService {
                 .ifPresent(m -> {throw new IllegalStateException("이미 존재하는 ID 회원입니다.");});
     }
     // 회원 조회
-    public List<Customer> findMembers() {
+    public List<Customer> findCustomers() {
         // 여기서도 별도의 조건이 있으면 코드로 표현함. 예를 들어 현재의 리소스상황에따라 상위 N개로 제한할 수 있음
         return customerRepository.findAll();
     }

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>  <th>이름</th>  <th>Age</th>
+        <th>등급</th>  <th>Job</th>  <th>적립금</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="customer : ${customers}">
+        <td th:text="${customer.id}"></td>        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.age}"></td>        <td th:text="${customer.levels}"></td>
+        <td th:text="${customer.job}"></td>        <td th:text="${customer.point}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>

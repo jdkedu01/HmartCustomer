@@ -33,10 +33,10 @@ public class Customer {
     public void setAge(int age) {
         this.age = age;
     }
-    public String getLevel() {
+    public String getLevels() {
         return levels;
     }
-    public void setLevel(String level) {
+    public void setLevels(String level) {
         this.levels = level;
     }
     public String getJob() {
