@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CustomerController {
@@ -47,5 +49,13 @@ public class CustomerController {
         List<Customer> customers = customerService.findCustomers();
         model.addAttribute("customers", customers);
         return "customers/customerList";
+    }
+    @GetMapping(value = "/selectOne")
+    public String oneCustomer(@RequestParam("id") String customerId, Model model) {
+        Optional<Customer> customer = customerService.findOne(customerId);
+        model.addAttribute("customer", customer);
+        // localhost:8080/hello-param?name=John     name이라는 변수에 'John'이 할당됨
+        // model.addAttribute('name', name) : 앞 name은 아래 html에서 사용될 변수 이름
+        return "customers/selectOne";
     }
 }
