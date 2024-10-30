@@ -52,7 +52,11 @@ public class CustomerController {
     }
     @GetMapping(value = "/selectOne")
     public String oneCustomer(@RequestParam("id") String customerId, Model model) {
-        Optional<Customer> customer = customerService.findOne(customerId);
+        System.out.println(customerId);
+        Optional<Customer> customerOptional = customerService.findOne(customerId);
+        Customer customer = customerOptional.orElse(null);
+        customerOptional.ifPresent(c-> System.out.println(customerOptional.get().getName()));
+        customerOptional.ifPresent(c-> System.out.println(c.getName()));
         model.addAttribute("customer", customer);
         // localhost:8080/hello-param?name=John     name이라는 변수에 'John'이 할당됨
         // model.addAttribute('name', name) : 앞 name은 아래 html에서 사용될 변수 이름
