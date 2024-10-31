@@ -13,6 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+//CREATE TABLE CUSTOMER2 (
+//    "ID" VARCHAR2(30 BYTE),
+//	"NAME" VARCHAR2(30 BYTE),
+//	"AGE" NUMBER(10,0),
+//	"LEVELS" VARCHAR2(15 BYTE),
+//	"JOB" VARCHAR2(15 BYTE),
+//	"POINT" NUMBER(10,0),
+//PRIMARY KEY ("ID")
+//    );
+//
+//INSERT INTO customer2
+//select * from 고객;
+
 @Repository
 public class JdbcCustomerRepository implements CustomerRepository{
     private final DataSource dataSource;
