@@ -7,19 +7,25 @@
       <thead>
       <tr>
         <th>Id</th>  <th>이름</th>  <th>Age</th>
-        <th>등급</th>  <th>Job</th>  <th>적립금</th>
+<!--        <th>등급</th>  <th>Job</th>  <th>적립금</th>-->
       </tr>
       </thead>
       <tbody>
       <tr th:each="customer : ${customers}">
         <td> <a th:href="@{|/selectOne?id=${customer.id}|}" th:text="${customer.id}"></a> </td>
         <td th:text="${customer.name}"></td>
-        <td th:text="${customer.age}"></td>        <td th:text="${customer.levels}"></td>
-        <td th:text="${customer.job}"></td>        <td th:text="${customer.point}"></td>
+        <td th:text="${customer.age}"></td>
+<!--        <td th:text="${customer.levels}"></td>-->
+<!--        <td th:text="${customer.job}"></td>        -->
+<!--        <td th:text="${customer.point}"></td>-->
       </tr>
       </tbody>
     </table>
   </div>
 </div> <!-- /container -->
+<p>
+  <a href="/">Home</a>
+  <a href="/customers/new">회원 가입</a>
+</p>
 </body>
 </html>

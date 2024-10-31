@@ -1,22 +1,106 @@
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--  <table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Id</th>  <th>이름</th>  <th>Age</th>-->
+<!--      <th>등급</th>  <th>Job</th>  <th>적립금</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--      <td th:text="${customer.id}"></td>        <td th:text="${customer.name}"></td>-->
+<!--      <td th:text="${customer.age}"></td>        <td th:text="${customer.levels}"></td>-->
+<!--      <td th:text="${customer.job}"></td>        <td th:text="${customer.point}"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div> &lt;!&ndash; /container &ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .button-container {
+      text-align: right;
+    }
+    .home-button {
+      padding: 10px 20px;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .home-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
 <body>
 <div class="container">
   <table>
     <thead>
     <tr>
-      <th>Id</th>  <th>이름</th>  <th>Age</th>
-      <th>등급</th>  <th>Job</th>  <th>적립금</th>
+      <th>Id</th>
+      <th>이름</th>
+      <th>Age</th>
+      <th>등급</th>
+      <th>Job</th>
+      <th>적립금</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <td th:text="${customer.id}"></td>        <td th:text="${customer.name}"></td>
-      <td th:text="${customer.age}"></td>        <td th:text="${customer.levels}"></td>
-      <td th:text="${customer.job}"></td>        <td th:text="${customer.point}"></td>
+      <td th:text="${customer.id}"></td>
+      <td th:text="${customer.name}"></td>
+      <td th:text="${customer.age}"></td>
+      <td th:text="${customer.levels}"></td>
+      <td th:text="${customer.job}"></td>
+      <td th:text="${customer.point}"></td>
     </tr>
     </tbody>
   </table>
-</div> <!-- /container -->
+  <div class="button-container">
+    <a href="/" class="home-button">Home</a>
+  </div>
+</div>
 </body>
 </html>
