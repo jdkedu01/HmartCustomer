@@ -26,6 +26,8 @@ import java.util.Optional;
 //INSERT INTO customer2
 //select * from 고객;
 
+//EXEC DBMS_XDB.SETHTTPPORT(9090);
+
 @Repository
 public class JdbcCustomerRepository implements CustomerRepository{
     private final DataSource dataSource;
